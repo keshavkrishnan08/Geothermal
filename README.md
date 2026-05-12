@@ -16,15 +16,25 @@ This repository accompanies the manuscript *"Continental-scale geothermal discov
 ## Quick reproduce
 
 ```bash
-git clone <repo>
+git clone git@github.com:keshavkrishnan08/Geothermal.git Geothermal2
 cd Geothermal2
 conda env create -f environment.yml && conda activate geoprospectnet
 
-# Optional: pull the 7 GB processed arrays from Zenodo
-# bash scripts/fetch_processed_data.sh
+# These four files are too large for GitHub and were excluded — regenerate them via:
+# 1. data/processed/geophysics_patches.npy (5.4 GB) :
+python -m src.data.ingest_geophysics --config configs/cpu_max.yaml
+# 2. data/raw/geology/sgmc/USGS_SGMC_Geodatabase (740 MB) — pull via:
+python -m src.data.ingest_geology --config configs/cpu_max.yaml
+# 3. data/raw/geology/qfaults/SHP/Qfaults_US_Database.dbf (194 MB) :
+#    auto-downloaded by ingest_geology when missing
+# 4. data/raw/labels/mordensky2023_full.csv (135 MB) — fetch with:
+curl -L 'https://www.sciencebase.gov/catalog/file/get/63c3aaadd34ec1b9ad6c6f30' -o data/raw/labels/mordensky2023_full.csv
 
-jupyter lab notebooks/nature_energy_pipeline.ipynb
+# Then run the full pipeline:
+jupyter lab notebooks/kaggle_full_pipeline.ipynb     # or nature_energy_pipeline.ipynb
 ```
+
+For Kaggle: `notebooks/kaggle_full_pipeline.ipynb` clones this repo automatically and runs every experiment in one 9-hour GPU session.
 
 The notebook runs end-to-end on CPU in ~3 hours. Pre-computed checkpoints, continental scores, discovery tables and figures are committed to `outputs/`; the notebook short-circuits any step you don't want to re-run.
 
