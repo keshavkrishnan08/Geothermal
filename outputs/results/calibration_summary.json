@@ -1,0 +1,7 @@
+{
+  "brier_score": 3.3187297958647832e-06,
+  "expected_calibration_error": 0.0006627232931881984,
+  "n_labeled": 27583,
+  "n_positives": 1370,
+  "n_negatives": 26213
+}

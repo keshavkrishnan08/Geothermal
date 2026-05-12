@@ -1,0 +1,42 @@
+# Ablation study configurations.
+# Each variant overrides a single capability of the default config.
+
+variants:
+  A0_full:
+    description: "Full GeoProspectNet (reference)"
+    overrides: {}
+
+  A1_no_contrastive:
+    description: "Remove contrastive alignment"
+    overrides:
+      training.contrastive_weight: 0.0
+
+  A2_no_attention:
+    description: "Equal-weight fusion (no attention)"
+    overrides:
+      model.use_attention: false
+
+  A3_no_spatial:
+    description: "No spatial smoothing"
+    overrides:
+      model.spatial_alpha: 0.0
+
+  A4_no_geophysics:
+    description: "Drop geophysics modality"
+    overrides:
+      modalities.drop: geophysics
+
+  A5_no_geochemistry:
+    description: "Drop geochemistry modality"
+    overrides:
+      modalities.drop: geochemistry
+
+  A6_no_thermal:
+    description: "Drop satellite thermal modality"
+    overrides:
+      modalities.drop: thermal
+
+  A7_no_geology:
+    description: "Drop geological structure modality"
+    overrides:
+      modalities.drop: geology

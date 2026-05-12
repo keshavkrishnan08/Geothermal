@@ -1,0 +1,68 @@
+code,name,state,lat,lon
+286,Geysers Unit 5-20,CA,38.777,-122.745
+299,Blundell,UT,38.4889,-112.8533
+510,Sonoma California Geothermal,CA,38.7903,-122.7559
+902,Bottle Rock Power,CA,38.8348,-122.7677
+7368,Geothermal 1,CA,38.752,-122.7195
+7369,Geothermal 2,CA,38.7492,-122.7117
+10018,Desert Peak Power Plant,NV,39.753999,-118.953497
+10287,Beowawe,NV,40.5547,-116.6175
+10479,Mammoth G3,CA,37.6455,-118.9096
+10480,Mammoth G1,CA,37.6451,-118.9143
+10481,Mammoth G2,CA,37.6464,-118.9092
+10631,CE Leathers,CA,33.1779,-115.565
+10632,Del Ranch Company,CA,33.1646,-115.616
+10634,Elmore Company,CA,33.1777,-115.6033
+10759,Salton Sea Power Gen Co - Unit 3,CA,33.158153,-115.638656
+10763,Ormesa III,CA,32.7757,-115.2637
+10873,Coso Finance Partners,CA,36.0372,-117.7981
+10874,Coso Power Developers,CA,36.0192,-117.7917
+10875,Coso Energy Developers,CA,36.0019,-117.7886
+10878,Salton Sea Power Gen Co Unit 1,CA,33.158,-115.6475
+10879,Salton Sea Power Gen Co - Unit 2,CA,33.1589,-115.6455
+50066,Calistoga Power Plant,CA,38.7879,-122.7434
+50210,Vulcan-BN Geothermal Power Company,CA,33.1633,-115.6167
+50654,Steamboat Hills LP,NV,39.37,-119.766944
+50765,Stillwater Facility,NV,39.547537,-118.555613
+50766,Ormesa I,CA,32.8156,-115.2568
+50964,Amedee Geothermal Venture I,CA,40.300833,-120.105
+52015,Dixie Valley,NV,39.9663,-117.8557
+52028,Puna Geothermal Venture I,HI,19.478976,-154.888362
+52158,Aidlin Geothermal Power Plant,CA,38.8339,-122.881
+54038,Geo East Mesa II,CA,32.7757,-115.2637
+54111,Second Imperial Geothermal,CA,32.7144,-115.5356
+54665,Steamboat II,NV,39.395603,-119.746762
+54666,Steamboat III,NV,39.394444,-119.7475
+54689,Heber Geothermal,CA,32.7146,-115.518
+54724,Ormesa II,CA,32.7881,-115.2481
+54996,Salton Sea Power Gen Co - Unit 4,CA,33.157,-115.6386
+55983,Salton Sea Power LLC - Unit 5,CA,33.1533,-115.6384
+55984,CE Turbo LLC,CA,33.1669,-115.5114
+55991,Brady,NV,39.796032,-119.010013
+56317,Raft River Geothermal Power Plant,ID,42.099417,-113.38245
+56321,Richard Burdette Geothermal,NV,39.390843,-119.754593
+56540,Galena 2 Geothermal Power Plant,NV,39.373189,-119.764507
+56541,Galena 3 Geothermal Power Plant,NV,39.388722,-119.748908
+56832,North Brawley Geothermal Plant,CA,33.0139,-115.5439
+56982,NGP Blue Mountain I LLC,NV,40.9961,-118.1414
+57213,ENEL Salt Wells LLC,NV,39.2944,-118.5725
+57353,Thermo No 1,UT,38.160653,-113.194462
+57376,Jersey Valley Geothermal Power Plant,NV,40.1808,-117.4739
+57446,McGinness Hills,NV,39.5911,-116.9119
+57451,Tuscarora Geothermal Power Plant,NV,41.4828,-116.1511
+57456,San Emidio,NV,40.380556,-119.399722
+57475,John L. Featherstone Plant,CA,33.204635,-115.573303
+58022,Neal Hot Springs Geothermal Project,OR,44.023056,-117.46806
+58319,"Patua Acquisition Project, LLC",NV,39.585833,-119.073056
+58533,Don A Campbell 1 Geothermal,NV,38.836667,-118.323889
+58570,Enel Cove Fort,UT,38.560278,-112.581111
+58629,"Lightning Dock Geothermal HI-01, LLC",NM,32.144722,-108.838333
+59382,Paisley Geothermal Generating Plant,OR,42.695833,-120.557778
+60419,Don A Campbell 2 Geothermal,NV,38.835836,-118.325339
+60785,Tungsten Mountain,NV,39.667002,-117.693658
+61912,McGinness Hills 3,NV,39.5963,-116.8942
+63001,Whitegrass No. 1,NV,39.163279,-119.180472
+63365,Soda Lake 3,NV,39.5545,-118.85
+63490,CD4,CA,37.646053,-118.915794
+63491,North Valley,NV,40.37294,-119.4625
+65773,Star Peak Geothermal Plant,NV,40.532133,-118.272015

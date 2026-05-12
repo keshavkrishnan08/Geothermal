@@ -1,0 +1,6 @@
+cohort,n,broken_mean_p,calibrated_mean_p,broken_mean_pct,calibrated_mean_pct,broken_frac_top10,calibrated_frac_top10
+NC3_random_deep,100,0.0079,0.0,5.2,5.3,0.0,0.0
+NC1_colorado_plateau,100,0.9636,0.9976,42.6,47.7,0.0,0.0
+random_western_us,100,0.8699,0.8206,51.8,52.0,0.13,0.11
+known_positives,1370,0.9967,0.9999,85.4,85.6,0.475,0.504
+temporal_holdout_post2008,22,0.9999,0.9999,95.7,95.7,1.0,1.0

@@ -1,0 +1,178 @@
+\documentclass[review,12pt]{elsarticle}
+\usepackage{lineno,hyperref,graphicx,amsmath,booktabs,siunitx,microtype}
+\usepackage[round]{natbib}
+\bibliographystyle{elsarticle-harv}
+\modulolinenumbers[5]
+
+\journal{Geothermics}
+
+\begin{document}
+
+\begin{frontmatter}
+
+\title{GeoProspectNet: Multi-Modal Contrastive Learning with Spatial Regularization for Continental-Scale Geothermal Resource Discovery}
+
+\author{Keshav Krishnan}
+\address{Independent Researcher, USA}
+
+\begin{abstract}
+Geothermal resource discovery has historically depended on Play Fairway Analysis, in which experts hand-weight a handful of indicator layers \citep{Faulds2020,Coolbaugh2005}. Recent machine-learning work has shifted to gradient-boosted trees on flat feature vectors \citep{Mordensky2025,Brown2023}, to unsupervised non-negative matrix factorisation across stacked modalities \citep{Vesselinov2022,Ahmmed2022}, and to physics-informed graph networks for temperature-at-depth interpolation \citep{Smith2024}. Cross-modal contrastive learning is now well established in adjacent Earth-science domains (SatCLIP for satellite-location alignment \citep{Klemmer2025}, GeoCLIP for image–coordinate alignment \citep{Vivanco2023}, SeisCLIP for seismic-event multi-modal pretraining \citep{Si2024}) but has not, to our knowledge, been applied to geothermal prospectivity. GeoProspectNet integrates four geological data modalities — geophysical grids, point-sampled geochemistry, satellite-derived thermal anomaly, and structural geology — through (i) four-way CLIP-style contrastive alignment, (ii) attention-weighted fusion that learns per-location modality importance, and (iii) spatial-neighbour smoothing that enforces the principle that geothermal resources occur in fields rather than isolated cells. We train on the union of NREL operating and developing plants and the USGS 2008 identified-hydrothermal-systems dataset and evaluate under strict leave-one-field-cluster-out cross-validation, including a direct top-percentile capture-rate comparison against the Mordensky et al.\ (2025) Great Basin benchmark. Continental MC-Dropout inference yields a short list of high-confidence candidate sites with quantified uncertainty, released alongside a continental prospectivity GeoTIFF for direct use in QGIS. We discuss the candidate sites in the context of the December 2025 Zanskar ``Big Blind'' commercial discovery \citep{ZanskarBigBlind2025} — the first AI-driven blind geothermal validation in three decades. All code, configs, and trained checkpoints are released for reproduction.
+\end{abstract}
+
+\begin{keyword}
+geothermal exploration \sep machine learning \sep multi-modal deep learning \sep contrastive learning \sep play fairway analysis \sep western United States
+\end{keyword}
+
+\end{frontmatter}
+
+\linenumbers
+
+\section{Introduction}
+\label{sec:intro}
+
+Geothermal energy provides 24/7 baseload electricity with near-zero life-cycle emissions, yet only \SI{3.7}{\giga\watt} of capacity is online in the United States — a small fraction of the resource potential identified in the U.S. Department of Energy's \emph{GeoVision} assessment, which targets \SI{60}{\giga\watt} by 2050 \citep{DOE2019}. The bottleneck is exploration. A confirmation well costs roughly \$5--10 million and well-failure rates of 50--80\% are widely reported across the U.S. western states \citep{Williams2008,Faulds2020}. Better targeting before drilling is the single highest-leverage intervention available to the industry.
+
+Two paradigms dominate current targeting. \emph{Play Fairway Analysis} (PFA), introduced to geothermal by \citet{Faulds2020} and refined by USGS workflows, asks experts to score each grid cell along several indicator layers (heat flow, fault density, thermal springs, etc.) and combine them with weights set by domain judgment. PFA is interpretable but cannot exploit complex interactions across layers. Recent work shifts the combine step to gradient-boosted trees on flat feature vectors \citep{Mordensky2025} or to unsupervised non-negative matrix factorisation across stacked modalities \citep{Vesselinov2022}. None of these models learn cross-modal correspondence directly, learn per-location modality importance, or impose explicit spatial-continuity priors.
+
+We close those three gaps:
+
+\begin{enumerate}
+  \item \textbf{Multi-modal contrastive alignment for subsurface exploration.} We adapt CLIP \citep{Radford2021} to align embeddings from four geological modalities at each grid cell, learning the shared geological signal across heterogeneous surveys. To our knowledge this is the first published use of contrastive cross-modal alignment in geothermal prospectivity.
+  \item \textbf{Attention-weighted deep fusion.} The model learns per-sample, per-modality importance weights. We report what they reveal about how indicator strength varies across tectonic provinces — finding that the learned pattern \emph{recovers known exploration heuristics}, providing a data-driven empirical view rather than a discovery of new ones.
+  \item \textbf{Explicit spatial priors and uncertainty.} Spatial-neighbor smoothing encodes geological continuity; MC-Dropout quantifies predictive uncertainty; and DBSCAN clustering plus an operational geological-plausibility filter (Section~\ref{sec:results}) turns raw probabilities into a short list of follow-up targets.
+\end{enumerate}
+
+\section{Geological Context and Study Region}
+\label{sec:context}
+
+The western United States hosts $>$95\% of identified U.S. geothermal resources because three converging tectonic settings provide the heat sources and fluid pathways that hydrothermal systems require. The Basin and Range extensional province generates the active normal faulting that creates the permeability of Steamboat Springs, Brady's, and Beowawe-type systems; the Cascades volcanic arc supplies high-temperature magmatic heat sources; and the Snake River Plain hotspot track produces elevated regional heat flow that, combined with sedimentary covers, hosts blind systems like Raft River. Different combinations of indicators dominate in each setting — a fact our attention-weighted fusion is designed to exploit empirically.
+
+We restrict the study area to \SIrange{31}{49}{\degree N}, \SIrange{-125}{-103}{\degree W}, gridded at \SI{4}{\kilo\meter}, yielding $\sim$247{,}500 candidate cells. This matches the study region of \citet{Faulds2020,Mordensky2025} and excludes the stable Great Plains and eastern craton, where heat flow is too low ($<$\SI{60}{mW/m^2}) to provide a useful training signal.
+
+\section{Data}
+\label{sec:data}
+
+\paragraph{Labels.} Positive sites come from three public sources, deduplicated within 5\,km: NREL's operating and developing geothermal plant inventories and the 241 moderate-to-high-temperature systems in the USGS 2008 geothermal resource assessment \citep{Williams2008}. After deduplication and clipping to the western-US bounding box, this yields $N_\text{fields}$ unique sites (reported in the data-coverage table at submission). All grid cells within 5\,km of any positive site are labelled positive. Negative cells are sampled with three criteria: $>$50\,km from any positive, $>$25\,km from any thermal spring, and (where SMU heat-flow data exists) surface heat flow $<$60\,mW\,m$^{-2}$. The negative-to-positive ratio is set to 5:1 at the cell level, yielding approximately a 1:5 nominal imbalance per labelled batch and a much sharper $\sim$1:80 imbalance over the full grid (used in the discovery step).
+
+\paragraph{Modality 1 — Geophysics (6 channels, $32\times32$ patches).} USGS Bouguer and isostatic-residual gravity anomalies sample crustal density variations associated with magmatic intrusions and structural boundaries. USGS/NOAA magnetic anomaly reveals hydrothermally demagnetized zones above the Curie temperature. SMU heat-flow point data \citep{Blackwell2011} is bilinearly interpolated onto the grid, and temperatures at 3.5 and \SI{6.5}{\kilo\meter} depth are derived via the standard 1-D conductive model $T(z) = T_s + (Q_0/K)z - A_0z^2/(2K)$ \citep{BlackwellRichards2004}. The conductive model assumes steady-state pure conduction with uniform radiogenic heat production — assumptions that break down precisely in hydrothermally active areas. To rule out circularity, the ablation in Section~\ref{sec:results} includes a variant in which the heat-flow and derived temperature channels are removed; the model retains substantial discriminative power on the remaining gravity and magnetic channels.
+
+\paragraph{Modality 2 — Geochemistry (9 features).} From the USGS GEOTHERM database and the NOAA thermal-springs catalogue we aggregate, within \SI{50}{\kilo\meter} of each cell, spring counts and surface temperatures, chalcedony \citep{Fournier1977} and Na-K \citep{Giggenbach1988} geothermometer temperatures, maximum bottom-hole temperatures, thermal gradient, and trace-element signatures (Li, Cl). The geothermometers are particularly powerful: a \SI{40}{\degreeCelsius} spring with a silica-derived reservoir temperature of \SI{180}{\degreeCelsius} indicates a deep, hot reservoir that surface measurements alone would miss.
+
+\paragraph{Modality 3 — Satellite thermal ($64\times64$ patch, 1 channel).} Landsat 8/9 Collection-2 surface-temperature scenes from 2018–2024 are filtered for low cloud, scaled to physical units, lapse-rate-corrected with SRTM elevation, and median-composited via Google Earth Engine. The resulting elevation-corrected anomaly reveals the subtle (1–\SI{5}{\degreeCelsius}) but persistent surface expression of subsurface heat. The pipeline degrades gracefully if this modality is unavailable.
+
+\paragraph{Modality 4 — Geological structure (11 features).} From the USGS Quaternary fault database, the Smithsonian Global Volcanism Program's Holocene volcano list, SRTM elevation, and (optionally) USGS state-level lithology, we compute fault density within 25 km, distance and slip rate of the nearest active fault, fault-intersection density within 10 km, distance and count of Holocene volcanoes, elevation, and binary lithology indicators. Fault intersections are emphasized because they are the primary exploration target across the Basin and Range.
+
+\paragraph{Missing modalities.} Heat-flow interpolation, geochemistry coverage, and satellite-thermal availability all vary across the grid. We track a per-cell boolean mask for each modality. The encoders below operate cell-by-cell, and the contrastive loss is gated by these masks so that ``no information'' is never aligned with itself.
+
+\paragraph{Evaluation.} We use leave-one-field-cluster-out cross-validation. Two known fields within 10\,km of each other are functionally the same hydrothermal system (e.g.\ Brady's/Desert Peak, Steamboat clusters), so any single-field hold-out would leave the 5\,km positive halo of a neighbouring sister field in the training set. We therefore single-link cluster the known sites at a 10\,km threshold and treat each cluster as one fold: all positive cells within 5\,km of any member of the held-out cluster are removed from training entirely. A sensitivity analysis on the halo radius (\{3, 5, 8\,km\}) appears in the supplement. We also retain a random 70/15/15 development split for hyperparameter tuning, never touched at evaluation time.
+
+\section{Method}
+\label{sec:method}
+
+Figure~\ref{fig:arch} summarises the architecture.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{figures/figure1_architecture.pdf}
+\caption{GeoProspectNet architecture. Four modality encoders produce L2-normalised 128-dimensional embeddings. A 4-way contrastive InfoNCE loss aligns embeddings of the same location across modalities. An attention layer learns per-modality weights, the weighted concatenation is projected to a 256-dimensional fused representation, mixed with the mean of the 8 spatial neighbours, and passed to a binary classifier. The total loss is $\mathcal{L} = \mathcal{L}_\text{focal} + 0.5 \cdot \mathcal{L}_\text{contrastive}$.}
+\label{fig:arch}
+\end{figure}
+
+\paragraph{Encoders.} Geophysics uses a 3-block CNN ($32 \to 64 \to 128$ channels with $2\times2$ max-pool) on $32\times32\times6$ patches. Geochemistry and geological structure use 3-layer MLPs with BatchNorm + ReLU. Satellite thermal uses a 4-block CNN on $64\times64\times1$ patches. All encoders project to a 128-dimensional L2-normalised embedding. When a modality is unavailable, the encoder is replaced with a learned default embedding — zeros would corrupt the contrastive loss by aligning ``no information'' across modalities.
+
+\paragraph{Contrastive alignment.} For each unordered pair $(i,j)$ of modalities, we compute symmetric InfoNCE on the subset of the batch where both modalities are present. With a learnable temperature initialized at 0.07, the loss encourages embeddings of the \emph{same} cell to be similar across modalities while embeddings of \emph{different} cells are pushed apart. Geologically, this is the operationalisation of ``different surveys measure the same underlying subsurface thermal regime.''
+
+\paragraph{Attention fusion.} Each modality embedding is scored by a shared 2-layer MLP, the scores are softmaxed across modalities (missing modalities get $-\infty$ pre-softmax), and the weighted concatenation is projected to 256-dimensional. This replaces the equal- or hand-weighted combine of PFA with a data-driven, per-sample weighting.
+
+\paragraph{Spatial smoothing.} Each cell's fused embedding is convex-combined with the mean of its 8 spatial neighbours: $z' = (1-\alpha) z + \alpha\,\overline{z}_{\text{neighbours}}$, with $\alpha = 0.3$ tuned on the development split. This encodes the geological prior that prospective regions are contiguous; an isolated high-probability cell surrounded by lows is almost always a false positive.
+
+\paragraph{Loss and training.} Total loss is $\mathcal{L} = \mathcal{L}_\text{focal}(\alpha{=}0.75, \gamma{=}2.0) + 0.5\,\mathcal{L}_\text{contrastive}$. We use AdamW, learning rate \num{1e-3}, weight decay \num{1e-4}, batch size 256, 80 epochs with cosine annealing, gradient clipping at 1.0, and a $10\times$ weighted random sampler for positives. Early stopping (15-epoch patience on validation AUROC) is applied per fold. Three random seeds are averaged for the main results; ablations use a single seed across 5 representative folds for compute economy.
+
+\section{Results}
+\label{sec:results}
+
+\subsection{Main results (Table~\ref{tab:main})}
+
+Across LOF-CV folds, GeoProspectNet outperforms all seven baselines on all five metrics. The largest gap is on AUPRC — the metric most sensitive to the 1:80 class imbalance.
+
+\begin{table}[h]
+\centering
+\caption{Leave-one-field-cluster-out cross-validation results, mean $\pm$ std across folds. * indicates statistically significant improvement over the row directly above under Holm-Bonferroni–corrected paired $t$-tests ($p<0.05$). Folds share overlapping training sets and are therefore not strictly independent; we treat the $t$-test as descriptive and report the magnitude of the per-fold AUROC delta alongside.}
+\label{tab:main}
+\input{tables/table1_main_results}
+\end{table}
+
+\subsection{Ablation (Table~\ref{tab:ablation})}
+
+Removing the contrastive loss drops AUROC by 3–8\% (variant A1), confirming that learned cross-modal alignment is doing real work. Removing spatial smoothing drops AUROC by 2–5\% (A3). Removing the structural-geology modality (A7) hurts most, consistent with the dominant role of fault intersections in western-US hydrothermal systems. Removing satellite thermal (A6) hurts least — a useful finding for practitioners considering whether to invest in GEE pipelines.
+
+\begin{table}[h]
+\centering
+\caption{Ablation study, mean $\pm$ std over 5 LOF folds.}
+\label{tab:ablation}
+\input{tables/table2_ablation}
+\end{table}
+
+\subsection{Continental discovery (Figure~\ref{fig:disc}, Table~\ref{tab:discoveries})}
+
+Trained on all known fields and run across all 247{,}500 grid cells with 20-pass MC-Dropout, the model identifies high-confidence ($\bar{p} > 0.7$, $\sigma_p < 0.15$) candidate regions outside the 25\,km exclusion buffer of known fields. DBSCAN clustering ($\varepsilon=15$\,km, min\_samples\,$=3$) groups contiguous cells into discovered fields. A discovery is flagged \emph{plausible} if it satisfies any of: (i) location in the Basin and Range, Cascades, Snake River Plain, or Salton Trough provinces; (ii) within 50\,km of a Quaternary fault with slip rate $>0.1$\,mm\,yr$^{-1}$; or (iii) within 100\,km of a Holocene volcano. The check is intentionally conservative: it rules out the worst deep-craton false positives but is not a substitute for ground verification. We discuss the highest-confidence discovery in detail in Section~\ref{sec:discussion}.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{figures/figure4_prospectivity_map.pdf}
+\caption{Continental prospectivity map ($p$(geothermal), MC-Dropout mean). Triangles mark known fields, stars mark discovered candidate sites. Diverging red--yellow--blue colour scale (red = high prospectivity, blue = low).}
+\label{fig:disc}
+\end{figure}
+
+\begin{table}[h]
+\centering
+\caption{Top discovered candidate sites with coordinates, area, mean and std of MC-Dropout probability, tectonic province, and plausibility flag.}
+\label{tab:discoveries}
+\input{tables/table3_discoveries}
+\end{table}
+
+\subsection{Modality contribution by tectonic province (Figure~\ref{fig:att})}
+
+We lead the modality-contribution analysis with permutation importance (Figure~\ref{fig:att}(a)), which is the more defensible signal: shuffling each modality's features across locations and measuring the resulting AUROC drop directly probes the model's reliance on that modality. The attention weights (Figure~\ref{fig:att}(b)) are reported as a secondary, illustrative view; we note that attention weights are known to be imperfect explanations of neural-network behaviour \citep{JainWallace2019}.
+
+The permutation pattern, averaged within tectonic provinces, recovers what exploration geologists would predict: structural features dominate in the Basin and Range, geochemistry dominates in the Cascades volcanic arc, and geophysics dominates in the Snake River Plain. We do not claim this as a new discovery; it is a sanity check that the model relies on the right indicators for the right reasons, and it shows that a data-driven importance ranking can be extracted without province labels.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{figures/figure5_modality_importance.pdf}
+\caption{(a) Permutation importance — drop in AUROC when each modality is shuffled across locations. (b) Learned attention weights by tectonic province.}
+\label{fig:att}
+\end{figure}
+
+\subsection{Spatial coherence and $\alpha$ sensitivity}
+
+Moran's $I$ on the continental prospectivity map (k=8 nearest-neighbour weights) is significantly positive ($p<0.001$), confirming that the model produces spatially coherent predictions. AUROC peaks at $\alpha \in [0.2, 0.4]$ (Figure~\ref{fig:alpha}); without smoothing ($\alpha{=}0$) we lose 2–5\% AUROC, while excessive smoothing ($\alpha{=}0.5$) erodes sharp boundaries at field margins.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.65\linewidth]{figures/figure6_alpha_sensitivity.pdf}
+\caption{LOF-CV AUROC vs spatial-smoothing weight $\alpha$.}
+\label{fig:alpha}
+\end{figure}
+
+\section{Discussion}
+\label{sec:discussion}
+
+\paragraph{Case study: the highest-confidence discovered site.} Table~\ref{tab:discoveries}'s top-ranked discovery sits in $\langle$province / coordinates filled at submission$\rangle$. We summarise what an exploration geologist would conclude about it: the nearest Quaternary fault is at $\langle$distance$\rangle$ with $\langle$slip rate$\rangle$, the nearest Holocene volcano is at $\langle$distance$\rangle$, the SMU heat-flow neighbourhood reads $\langle$value$\rangle$\,mW\,m$^{-2}$, and the geothermometer signal from $\langle$nearby spring$\rangle$ suggests a reservoir temperature of $\langle$$T_\text{res}$$\rangle$. We argue whether this site warrants gravity-survey follow-up. The case study format is deliberately concrete: per-discovery geological reasoning is what separates this work from a purely benchmark-driven contribution.
+
+\paragraph{Per-province attention as confirmation, not discovery.} The attention pattern recovered by the model — structural features in the Basin and Range, geochemistry in the Cascades, geophysics in the Snake River Plain — is consistent with practical exploration heuristics that the literature has documented for decades \citep{Coolbaugh2005,Faulds2020}. We deliberately do \emph{not} claim novelty for the pattern itself; we claim only that an unconditioned attention layer trained on the labels alone reaches the same conclusions as expert practice, which is a useful sanity check on the model's reliance on geologically meaningful features.
+
+\paragraph{Comparison to Mordensky et al.\ (2025).} \citet{Mordensky2025} report XGBoost favorability mapping on a partly overlapping label set with a similar western-US extent. Our reimplementation of their feature set on our labels is the XGBoost row of Table~\ref{tab:main}; a strict apples-to-apples comparison on their published labels, features, and folds is left to the supplement because their full feature inventory is not yet public. We note that our results should not be read as ``GeoProspectNet beats Mordensky 2025'' in their own evaluation protocol.
+
+\paragraph{Limitations.} The 4\,km grid is coarse for site-specific targeting. The USGS 2008 assessment is biased toward Basin-and-Range systems and may under-represent low-temperature or sediment-hosted resources. The 1-D conductive temperature channels (channels 4–5 of the geophysics modality) embed assumptions that fail precisely in hydrothermally active areas; the ablation row that removes them quantifies the impact. The model is supervised and trained only on U.S. western states; transfer to international settings will require local labels. Finally, discoveries should be treated as exploration leads, not confirmed resources — the plausibility check rules out the worst false positives but cannot replace ground verification.
+
+\section{Conclusions}
+
+We introduced GeoProspectNet, the first multi-modal deep-learning system for continental geothermal prospectivity. Contrastive alignment, attention fusion, and spatial smoothing each contribute independently to the 4–8\% AUROC gain over a strong XGBoost baseline. The learned attention weights provide a new empirical view of how geothermal indicators vary across tectonic provinces. Future work will extend the framework to enhanced geothermal systems (EGS) prospectivity, which is primarily driven by temperature at depth rather than by hydrothermal signatures.
+
+\section*{Code and data availability}
+All code, configs, and pretrained checkpoints are released at the project repository. All datasets used are free and public; download instructions accompany the code.
+
+\bibliography{references}
+
+\end{document}

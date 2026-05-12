@@ -1,0 +1,22 @@
+{
+  "mwe_p10": 2492.208540544303,
+  "mwe_p50": 6607.369583094358,
+  "mwe_p90": 17129.78581998435,
+  "lcoe_baseline_per_mwh": 66.51611645745025,
+  "lcoe_cheap_case_per_mwh": 53.05212858020245,
+  "lcoe_expensive_case_per_mwh": 102.85358373979527,
+  "earthshot_target_per_mwh": 45.0,
+  "earthshot_achievable_today": false,
+  "mwe_meeting_earthshot_proxy": 6549.769144106399,
+  "fraction_meeting_earthshot": 0.9912823948677949,
+  "geovision_2050_target_MWe": 60000.0,
+  "geovision_fraction_p50": 0.11012282638490596,
+  "geovision_fraction_p90": 0.2854964303330725,
+  "us_installed_2023_MWe": 3800.0,
+  "capacity_multiplier_p50": 1.7387814692353574,
+  "annual_TWh_p50": 53.82891851955312,
+  "co2_displaced_Mt_per_yr_p50": 20.777962548547503,
+  "co2_displaced_Mt_30yr_p50": 623.338876456425,
+  "co2_displaced_Mt_30yr_p10": 235.11481415127133,
+  "co2_displaced_Mt_30yr_p90": 1616.023034989318
+}

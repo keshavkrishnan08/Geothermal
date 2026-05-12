@@ -1,0 +1,17 @@
+metric,value
+Total MWe P50,6607 MWe
+Total MWe P10–P90 band,2492–17130 MWe
+LCOE baseline (NREL ATB 2023),$66.5 / MWh
+LCOE cheap case,$53.1 / MWh
+LCOE expensive case,$102.9 / MWh
+Earthshot target,$45.0 / MWh by 2035
+Baseline ≤ Earthshot target?,no
+MWe with T ≥ 180 °C (Earthshot-eligible),6550 MWe (99%)
+DOE GeoVision 2050 target,60000 MWe
+P50 / GeoVision target,11.0%
+P90 / GeoVision target,28.5%
+Annual generation P50,53.8 TWh/yr
+CO₂ displaced per year P50,20.8 Mt CO₂/yr
+CO₂ displaced over 30-yr lifetime P50,623 Mt CO₂
+CO₂ band over 30 yr (P10–P90),235–1616 Mt CO₂
+vs US 2023 installed (3 800 MWe),1.74× at P50

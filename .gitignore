@@ -1,0 +1,39 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.ipynb_checkpoints/
+.pytest_cache/
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+
+# --- Editors ---
+.vscode/
+.idea/
+
+# --- Manuscript (excluded per author preference) ---
+manuscript/
+
+# --- Files > 100 MB (GitHub hard cap) — regenerable via src/data/ scripts ---
+# 5.4 GB processed geophysics patches — rebuild via ingest_geophysics.py
+data/processed/geophysics_patches.npy
+# 552 MB + 188 MB SGMC geodatabase tables — pull fresh from USGS Data Series 1052
+data/raw/geology/sgmc/USGS_SGMC_Geodatabase/
+# 194 MB QFaults dBASE table — pull fresh from USGS QFaults
+data/raw/geology/qfaults/SHP/Qfaults_US_Database.dbf
+# 135 MB Mordensky 2023 ScienceBase release
+data/raw/labels/mordensky2023_full.csv
+
+# --- Logs / scratch ---
+*.log
+.tmp/
+tmp_*
+/tmp/
+
+# --- Secrets (defensive — none currently in repo) ---
+.env
+*.key
+*credentials*

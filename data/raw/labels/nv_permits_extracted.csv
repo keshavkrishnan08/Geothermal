@@ -1,0 +1,95 @@
+permit,well,operator,county,date,lat,lon,shl_n,shl_e,file
+1702,46-12,"ORNI 52, LLC",Humboldt,6/10/2025,41.930777,-118.70911,4643503,358300,1702_11-26-2025_ORNI_52_LLC_Humboldt_Baltazor_46-12.pdf
+,STC-2A (38-29),"STC, Ventures, LLC",Washoe,1/28/2025,39.389477,-119.764069,4363644,261954,GEO_1638_2-28-2025_STC_Ventures_LLC_Washoe_STC-2A.pdf
+1641,53B(54)-3,,Eureka,2/4/2025,40.327465,-116.432813,4464258,548183,GEO_1641_5-08-2025_Ormat_Nevada_Inc_Crecent_Valley_Lander_53B_54_-3.pdf
+,78(88)-12,"Ormat Nevada, Inc.",Mineral,3/10/2025,38.298625,-118.035496,4239456,409455,GEO_1642_5-13-2025_Ormat_Nevada_Inc_Excelsior_Mineral_78_88_-12_1.pdf
+1643,58-18,"Ormat Nevada, Inc.",Mineral,3/10/2025,38.28436,-118.022979,4237861,410532,GEO_1643_5-13-2025_Ormat_Nevada_Inc_Excelsior_Mineral_58-18_1.pdf
+1644,31(41)-18,"Ormat Nevada, Inc.",Mineral,3/10/2025,38.296472,-118.028215,4239210,410089,GEO_1644_5-13-2025_Ormat_Nevada_Inc_Excelsior_Mineral_31_41_-18_1.pdf
+1645,24(34)-18,"Ormat Nevada, Inc.",Mineral,3/10/2025,38.291564,-118.028763,4238666,410035,GEO_1645_5-13-2025_Ormat_Nevada_Inc_Excelsior_Mineral_24_34_-18.pdf
+1646,26(36)-18,"Ormat Nevada, Inc.",Mineral,3/10/2025,38.287787,-118.02991,4238248,409930,GEO_1646_5-13-2025_Ormat_Nevada_Inc_Excelsior_Mineral_26_36_-18.pdf
+1648,25-12,"Ormat Nevada, Inc.",,5/5/2025,40.397978,-117.886904,4472308,424735,GEO_1648_9-5-2025_Ormat_Nevada_Inc_Harmony_Pershing_25-12.pdf
+1649,46-1,"Ormat Nevada, Inc.",,5/5/2025,40.411725,-117.881144,4473829,425239,GEO_1649_9-5-2025_Ormat_Nevada_Inc_Harmony_Pershing_46-1.pdf
+1650,52-1,"Ormat Nevada, Inc.",,5/5/2025,40.418132,-117.878646,4474538,425458,GEO_1650_9-5-2025_Ormat_Nevada_Inc_Harmony_Pershing_52-1.pdf
+1651,54-14,"Ormat Nevada, Inc.",Pershing,5/5/2025,40.385966,-117.898964,4470985,423698,GEO_1651_9-5-2025_Ormat_Nevada_Inc_Harmony_Pershing_54-14.pdf
+1652,63-12,"Ormat Nevada, Inc.",Pershing,5/5/2025,40.401709,-117.878504,4472715,425452,GEO_1652_9-5-2025_Ormat_Nevada_Inc_Harmony_Pershing_63-12.pdf
+1653,75(16-12)-11,"Ormat Nevada, Inc.",Pershing,5/5/2025,40.397923,-117.892925,4472307,424224,GEO_1653_9-5-2025_Ormat_Nevada_Inc_Harmony_Pershing_75_16-12_-11.pdf
+1654,83(13-12)-11,"Ormat Nevada, Inc.",,5/5/2025,40.402686,-117.892092,4472835,424300,GEO_1654_9-5-2025_Ormat_Nevada_Inc_Harmony_Pershing_83_13-12_-11.pdf
+,11(28-14)-23,"Ormat Nevada, Inc.",,5/5/2025,40.377306,-117.90733,4470031,422978,GEO_1655_9-5-2025_Ormat_Nevada_Inc_Harmony_Pershing_11_28-14_-23.pdf
+1656,13-6,"Ormat Nevada, Inc.",,5/5/2025,40.416266,-117.87036,4474324,426159,GEO_1656_9-5-2025_Ormat_Nevada_Inc_Harmony_Pershing_13-6.pdf
+1657,77(86)-15,"Ormat Nevada, Inc.",,5/5/2025,40.380963,-117.912009,4470441,422585,GEO_1657_9-5-2025_Ormat_Nevada_Inc_Harmony_Pershing_77_86_-15.pdf
+,77(88)-11,"Ormat Nevada, Inc.",,,40.393998,-117.894888,4471873,424053,GEO_1658_9-5-2025_Ormat_Nevada_Inc_Harmony_Pershing_77_88_-11.pdf
+1659,21A-13,Ormat Nevada Inc.,,1/14/2026,41.919006,-118.723556,4642220,357076,GEO_1659_1-29-2026_Ormat_Nevada_Inc_Baltazor_Humboldt_21A-13.pdf
+1661,55-14,Ormat Nevada Inc.,,1/14/2026,41.925756,-118.71181,4642950,358065,GEO_1661_1-29-2026_Ormat_Nevada_Inc_Baltazor_Humboldt_55-14.pdf
+1668,52-15,Ormat Dixie Valley LLC,Churchill,8/6/2025,39.952615,-117.917521,4422901,421626,GEO_1668_12-17-2025_Ormat_Dixie_Valley_LLC_Dixie_Valley_West_Churchill_52-15.pdf
+1669,81-14,Ormat Dixie Valley LLC,Churchill,7/1/2025,39.954562,-117.889719,4423093,424003,GEO_1669_12-17-2025_Ormat_Dixie_Valley_LLC_Dixie_Valley_West_Churchill_84-14.pdf
+1670,24A-23,"Ormat Nevada, Inc",,6/9/2025,41.816409,-118.860616,4631066,345463,GEO_1670_9-03-2025_Ormat_Nevada_Inc_McGee_Humboldt_24A-23.pdf
+1671,46-23,"Ormat Nevada, Inc",Humboldt,6/9/2025,41.813356,-118.856736,4630720,345778,GEO_1671_9-03-2025_Ormat_Nevada_Inc_McGee_Humboldt_46-23.pdf
+1672,38-23,"Ormat Nevada, Inc",Humboldt,6/9/2025,41.809163,-118.857012,4630255,345745,GEO_1672_9-03-2025_Ormat_Nevada_Inc_McGee_Humboldt_38-23.pdf
+1673,82A-27,"Ormat Nevada, Inc",Humboldt,6/9/2025,41.805474,-118.863514,4629857,345196,GEO_1673_9-03-2025_Ormat_Nevada_Inc_McGee_Humboldt_82A-27.pdf
+,ROS-11-27,"Zanskar Geothermal & Minerals, Inc.",,,40.702623,-118.2562,4506505,393877,GEO_1677_9-17-2025_Zanskar_Geothermal_and_Minerals_Inc_Rose_of_Snowville_Pershing_ROS_11-27_1.pdf
+1678,ROS-28-15,"Zanskar Geothermal & Minerals, Inc.",,7/23/2025,40.719078,-118.253217,4508328,394155,GEO_1678_9-17-2025_Zanskar_Geothermal_and_Minerals_Inc_Rose_of_Snowville_Pershing_ROS_28-15.pdf
+1679,ROS-68-27,"Zanskar Geothermal & Minerals, Inc.",,7/23/2025,40.689218,-118.243817,4505002,394902,GEO_1679_9-17-2025_Zanskar_Geothermal_and_Minerals_Inc_Rose_of_Snowville_Pershing_ROS_68-27.pdf
+1680,38A-23,"Ormat Nevada, Inc",Lander,10/01/2025,40.539203,-116.647232,4487666,529874,GEO_1680_10-03-2025_Ormat_Nevada_Whirlwind_Lander_38A-23.pdf
+1690,62B-25,,Esmeralda,8/29/2025,37.917309,-117.918407,4197038,419275,GEO_1690_11-4-2025_Ormat_Nevada_Lone_Mountain_Esmeralda_62B-25.pdf
+1692,PKL-16(56)-04,"Zanskar Geothermal & Minerals, Inc.",Humboldt,10/2/2025,40.759789,-117.489182,4512207,458710,GEO_1692_11-20-2025_Zanskar_Geothermal_and_Mineral_Inc_Humboldt_Pumpernickel_PKL-16_56_-04.pdf
+1693,PKL-27(47)-04,"Zanskar Geothermal & Minerals, Inc.",,10/2/2025,40.758588,-117.487727,4512073,458832,GEO_1693_11-20-2025_Zanskar_Geothermal_and_Mineral_Inc_Humboldt_Pumpernickel_PKL-27_47_-04.pdf
+1694,PKL-35(56)-04,"Zanskar Geothermal & Minerals, Inc.",,10/2/2025,40.762175,-117.485313,4512470,459038,GEO_1694_11-20-2025_Zanskar_Geothermal_and_Mineral_Inc_Humboldt_Pumpernickel_PKL-35_56_-04.pdf
+1695,PKL-48(57)-04,"Zanskar Geothermal & Minerals, Inc.",,10/2/2025,40.757114,-117.482634,4511907,459261,GEO_1695_11-20-2025_Zanskar_Geothermal_and_Mineral_Inc_Humboldt_Pumpernickel_PKL-48_57_-04.pdf
+1696,PKL-67(47)-04,,Humboldt,10/9/2025,40.758906,-117.478513,4512104,459610,GEO_1696_11-21-2025_Zanskar_Geothermal_and_Mineral_Inc_Humboldt_Pumpernickel_PKL-67_47_-04.pdf
+1697,PKL-55(45)-04,,Humboldt,10/9/2025,40.762441,-117.479853,4512497,459499,GEO_1697_11-21-2025_Zanskar_Geothermal_and_Minerals_Inc_Humboldt_Pumpernickel_PKL-55_45_-04.pdf
+1698,PKL-16B(57)-04,"Zanskar Geothermal & Minerals, Inc.",Humboldt,10/9/2025,40.759618,-117.48918,4512188,458710,GEO_1698_11-20-2025_Zanskar_Geothermal_and_Mineral_Inc_Humboldt_Pumpernickel_PKL-16B_57_-04.pdf
+1699,PKL-28(57)-04,"Zanskar Geothermal & Minerals, Inc.",Humboldt,10/9/2025,40.757165,-117.487646,4511915,458838,GEO_1699_11-20-2025_Zanskar_Geothermal_and_Minerals_Inc_Humboldt_Pumpernickel_PKL-28_57_-04.pdf
+1700,PKL-57-04,"Zanskar Geothermal & Minerals, Inc.",,10/9/2025,40.758583,-117.480216,4512069,459466,GEO_1700_11-20-2025_Zanskar_Geothermal_and_Minerals_Inc_Humboldt_Pumpernickel_PKL-57-04.pdf
+1701,AGR 1 TG,Opus 7 Geothermal LLC,,11/5/2025,39.437399,-119.361782,4367979,296743,GEO_1701_11-24-2025_Opus_7_Geothermal_LLC_Lyon_ARG1_TG.pdf
+1710,77A-13,"Beowawe Power, LLC",Lander,11/24/2025,40.554986,-116.618779,4489428,532276,GEO_1710_01-22-2026_Ormat_Beowawe_Beowawe_LLC_Lander_Beowawe_77A-13.pdf
+1711,83(72)-14,Ormat Nevada Inc.,Humboldt,1/14/2026,41.922166,-118.717044,4642560,357623,GEO_1711_1-29-2026_Ormat_Nevada_Humboldt_Baltazor_83_72_-14.pdf
+1569,43(42)-22,"Ormat Nevada, Inc.",Esmeralda,1/31/2024,37.841938,-117.51314,4188402,454851,Geo_1569_03-07-2024_Ormat_Pearl_Esmeralda_43_42_-22.pdf
+1570,63(64)-22,"Ormat Nevada, Inc.",Esmeralda,1/31/2024,37.840504,-117.509289,4188241,455189,Geo_1570_03-07-2024_Ormat_Pearl_Esmeralda_63_64_-22_.pdf
+1571,52(62)-22,"Ormat Nevada, Inc.",Esmeralda,1/31/2024,37.842287,-117.50971,4188439,455153,Geo_1571_03-07-2024_Ormat_Pearl_Esmeralda_52_62_-22.pdf
+1572,55-22,"Ormat Nevada, Inc.",Esmeralda,1/31/2024,37.837722,-117.510656,4187933,455067,Geo_1572_03-07-2024_Ormat_Pearl_Esmeralda_55-22.pdf
+1573,34-22,"Ormat Nevada, Inc.",Esmeralda,1/31/2024,37.839229,-117.514394,4188102,454739,Geo_1573_03-07-2024_Ormat_Pearl_Esmeralda_34-22.pdf
+1577,12-14,Open Mountain Energy LLC,Lyon,2/22/2024,39.170798,-119.171289,4337976,312428,Geo_1577_06-03-2024_Whitegrass_No_1_Lyon_12-14.pdf
+1578,24-15,Open Mountain Energy LLC,Lyon,2/22/2024,39.1659,-119.177862,4337446,311847,Geo_1578_06-03-2024_Whitegrass_No_1_Lyon_24-15.pdf
+1579,41-15,Open Mountain Energy LLC,Lyon,2/22/2024,39.170682,-119.172188,4337965,312350,Geo_1579_06-03-2024_Whitegrass_No_1_Lyon_41-15.pdf
+1580,44-15,Open Mountain Energy LLC,Lyon,2/22/2024,39.16601,-119.173907,4337450,312189,Geo_1580_06-03-2024_Whitegrass_No_1_Lyon_44-15.pdf
+1581,52-15,Open Mountain Energy LLC,Lyon,2/22/2024,39.168661,-119.170413,4337737,312498,Geo_1581_06-03-2024_Whitegrass_No_1_Lyon_52-15.pdf
+1583,62-25,"Ormat Nevada, Inc",Esmeralda,3/19/2024,37.916146,-117.918563,4196909,419260,Geo_1583_04-12-2024_Ormat_Lone_Mountain_Esmeralda_62-25.pdf
+1588,13-6,"Ormat Nevada, Inc",Esmeralda,4/17/2024,37.885681,-117.910566,4193522,419930,Geo_1588_06-17-2024_Ormat_Lone_Mountain_13-6.pdf
+1589,17A-31,"Ormat Nevada, Inc",Esmeralda,4/17/2024,37.887331,-117.910574,4193705,419931,Geo_1589_06-17-2024_Ormat_Lone_Mountain_17A-31.pdf
+1590,21-31,"Ormat Nevada, Inc",Esmeralda,4/17/2024,37.897692,-117.9087,4194853,420107,Geo_1590_06-17-2024_Ormat_Lone_Mountain_21-31.pdf
+1591,62A-25,"Ormat Nevada, Inc",Esmeralda,4/17/2024,37.916443,-117.918567,4196942,419260,Geo_1591_06-17-2024_Ormat_Lone_Mountain_62A-25.pdf
+1592,81-1,"Ormat Nevada, Inc",Esmeralda,4/17/2024,37.890217,-117.921914,4194035,418937,Geo_1592_06-17-2024_Ormat_Lone_Mountain_81-1.pdf
+1593,83A-36,"Ormat Nevada, Inc",Esmeralda,4/17/2024,37.899437,-117.912691,4195050,419758,Geo_1593_06-17-2024_Ormat_Lone_Mountain_83A-36.pdf
+1594,87-31,"Ormat Nevada, Inc",Esmeralda,4/17/2024,37.887848,-117.894853,4193749,421314,Geo_1594_06-17-2024_Ormat_Lone_Mountain_87-31.pdf
+1595,12-11,ORNI 24 LLC,Lander,4/9/2024,39.615226,-116.892727,4385058,509208,Geo_1595_07-11-2024_ORNI_24_LLC_McGinness_Hills_12-11.pdf
+1596,74-10,ORNI 24 LLC,Lander,4/09/2024,39.612285,-116.898591,4384731,508705,Geo_1596_07-11-2024_ORNI_24_LLC_McGinness_Hills_74-10.pdf
+,28-12,ORNI 24 LLC,Lander,4/09/2024,39.605051,-116.872451,4383931,510950,Geo_1597_07-11-2024_ORNI_24_LLC_McGinness_Hills_28-12.pdf
+1598,23-13,ORNI 24 LLC,Lander,4/09/2024,39.598374,-116.871823,4383190,511005,Geo_1598_07-11-2024_ORNI_24_LLC_McGinness_Hills_23-13.pdf
+1599,22A-10RD,ORNI 24 LLC,Lander,4/9/2024,39.615609,-116.908407,4385099,507862,Geo_1599_07-11-2024_ORNI_24_LLC_McGinness_Hills_22A-10RD.pdf
+1601,85(86)-3,,Eureka,,40.323381,-116.424855,4463809,548862,Geo_1601_08-23-2024_Ormat_Crescent_Valley_Eureka_85_86_-3.pdf
+1602,46(37)-2,,Eureka,,40.321727,-116.416735,4463630,549553,Geo_1602_08-23-2024_Ormat_Crescent_Valley_Eureka_46_37_-2.pdf
+1604,12-5,"Ormat Nevada, Inc",Washoe,,39.373077,-119.769898,4361839,261396,Geo_1604_09-06-2024_Ormat_Nevada_Steamboat_Washoe_12-5.pdf
+1605,28A-32,"Ormat Nevada, Inc",Washoe,,39.376438,-119.767976,4362207,261573,Geo_1605_09-06-2024_Ormat_Nevada_Steamboat_Washoe_28A-32.pdf
+1606,82A-21,,Esmeralda,7/19/2024,37.842492,-117.522464,4188468,454031,Geo_1606_10-28-2024_Ormat_Nevada_Pearl_Esmeralda_82A-21.pdf
+1607,66A-21,,Esmeralda,7/19/2024,37.836581,-117.526149,4187814,453703,Geo_1607_10-28-2024_Ormat_Nevada_Pearl_Esmeralda_66A-21.pdf
+1608,43(73)-22,"Ormat Nevada, Inc.",Esmeralda,,37.840775,-117.513143,4188273,454850,Geo_1608_09-18-2024_Ormat_Nevada_Pearl_Esmeralda_43_73_-22.pdf
+1609,45(52)-22,"Ormat Nevada, Inc.",Esmeralda,,37.838059,-117.511772,4187971,454969,Geo_1609_09-18-2024_Ormat_Nevada_Pearl_Esmeralda_45_52_-22.pdf
+1610,61(74)-22,"Ormat Nevada, Inc.",Esmeralda,,37.845614,-117.509335,4188808,455188,Geo_1610_09-18-2024_Ormat_Nevada_Pearl_Esmeralda_61_74_-22.pdf
+1611,74(43)-22,"Ormat Nevada, Inc.",Esmeralda,,37.839213,-117.505541,4188096,455518,Geo_1611_09-18-2024_Ormat_Nevada_Pearl_Esmeralda_74_43_-22.pdf
+1612,83(53)-22,"Ormat Nevada, Inc.",Esmeralda,,37.840859,-117.504143,4188278,455642,Geo_1612_09-18-2024_Ormat_Nevada_Pearl_Esmeralda_83_53_-22.pdf
+1613,48A-11,ORNI 47 LLC,Mineral,,38.830116,-118.342705,4298781,383453,Geo_1613_10-03-2024_ORNI_47_Mineral_48A-11.pdf
+1614,48B-11,ORNI 47 LLC,Mineral,,38.830196,-118.342764,4298790,383448,Geo_1614_10-03-2024_ORNI_47_Mineral_48B-11.pdf
+1615,15-16,"Nevada Bureau of Mines and Geology, University of Nevada, Reno",Lander,10/3/2024,40.466097,-116.903464,4479496,508184,Geo_1615_10-21-2024_NBMG_Argenta_Rise_Lander_15-16.pdf
+1616,10-47,"Nevada Bureau of Mines and Geology, University of Nevada, Reno",Lander,,40.478019,-116.896061,4480820,508810,Geo_1616_10-21-2024_NBMG_Argenta_Rise_Lander_10-47.pdf
+1617,10-45,"Nevada Bureau of Mines and Geology, University of Nevada, Reno",Lander,,40.483082,-116.89675,4481382,508751,Geo_1617_10-21-2024_NBMG_Argenta_Rise_Lander_10-45.pdf
+1618,3-77,"Nevada Bureau of Mines and Geology, University of Nevada, Reno",Lander,,40.49321,-116.888309,4482507,509465,Geo_1618_10-21-2024_NBMG_Argenta_Rise_Lander_3-77.pdf
+1619,1-88,"Nevada Bureau of Mines and Geology, University of Nevada, Reno",Lander,,40.493741,-116.848504,4482571,512838,Geo_1619_10-21-2024_NBMG_Argenta_Rise_Lander_1-88.pdf
+1620,1-85,"Nevada Bureau of Mines and Geology, University of Nevada, Reno",Lander,,40.493825,-116.843902,4482581,513228,Geo_1620_10-21-2024_NBMG_Argenta_Rise_Lander_1-85.pdf
+1621,34-85,"Nevada Bureau of Mines and Geology, University of Nevada, Reno",Lander,,40.514423,-116.770574,4484881,519436,Geo_1621_10-21-2024_NBMG_Argenta_Rise_Lander_34-85.pdf
+1622,34-83,"Nevada Bureau of Mines and Geology, University of Nevada, Reno",Lander,,40.518038,-116.771659,4485282,519343,Geo_1622_10-21-2024_NBMG_Argenta_Rise_Lander_34-83.pdf
+1623,34-41,"Nevada Bureau of Mines and Geology, University of Nevada, Reno",Lander,,40.519957,-116.77634,4485494,518946,Geo_1623_10-21-2024_NBMG_Argenta_Rise_Lander_34-41.pdf
+1624,11-28,"Nevada Bureau of Mines and Geology, University of Nevada, Reno",Lander,,40.566404,-116.76117,4490653,520217,Geo_1624_10-21-2024_NBMG_Argenta_Rise_Lander_11-28.pdf
+1625,3-51,"Nevada Bureau of Mines and Geology, University of Nevada, Reno",Lander,,40.595186,-116.773974,4493845,519125,Geo_1625_10-21-2024_NBMG_Argenta_Rise_Lander_3-51.pdf
+1626,10-54,"Nevada Bureau of Mines and Geology, University of Nevada, Reno",Lander,,40.574086,-116.773407,4491503,519179,Geo_1626_10-21-2024_NBMG_Argenta_Rise_Lander_10-54.pdf
+,28A-33,Ormat Dixie Valley LLC,Churchill,,39.985212,-117.829025,4426445,429219,Geo_1635_11-25-2024_Ormat_Dixie_Valley_Pershing_28A-33.pdf
+1636,24A-5,"Ormat Nevada, Inc",Washoe,9/16/2024,39.368628,-119.768353,4361341,261514,Geo_1636_12-10-2024_Ormat_Nevada_Steamboat_Washoe_24A-5.pdf

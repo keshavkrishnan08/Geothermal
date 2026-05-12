@@ -1,0 +1,74 @@
+# Tiny config for local CPU smoke-testing.
+# Same shape as default.yaml, but with epochs/batch slashed so a single fold
+# trains in under 10 minutes on a laptop.
+
+study_region:
+  lat_min: 31.0
+  lat_max: 49.0
+  lon_min: -125.0
+  lon_max: -103.0
+  grid_resolution_km: 4.0
+  storage_crs: "EPSG:4326"
+  distance_crs: "EPSG:5070"
+
+modalities:
+  use_thermal: false      # skip Landsat for the smoke test — fewer files needed
+  n_geophys_channels: 6
+  geophys_patch_size: 32
+  n_geochem_features: 9
+  thermal_patch_size: 64
+  n_geostruct_features: 11
+
+model:
+  embed_dim: 64           # halved from default
+  fused_dim: 128
+  spatial_alpha: 0.3
+  spatial_k_neighbors: 8
+  contrastive_temperature: 0.07
+  classifier_dropout: 0.2
+  encoder_dropout: 0.1
+
+training:
+  optimizer: AdamW
+  learning_rate: 1.0e-3
+  weight_decay: 1.0e-4
+  scheduler: CosineAnnealingLR
+  scheduler_T_max: 8
+  scheduler_eta_min: 1.0e-6
+  batch_size: 64           # quartered
+  epochs: 8                # 80 → 8
+  early_stopping_patience: 4
+  early_stopping_metric: auroc
+  positive_oversampling: 10
+  contrastive_weight: 0.5
+  focal_alpha: 0.75
+  focal_gamma: 2.0
+  grad_clip: 1.0
+  num_workers: 0           # avoid multiprocessing on Mac
+  seed: 42
+  n_seeds: 1
+
+labels:
+  positive_buffer_km: 5.0
+  negative_min_distance_km: 50.0
+  negative_spring_min_distance_km: 25.0
+  negative_max_heatflow: 60.0
+  negative_pos_ratio: 5
+
+discovery:
+  prob_threshold: 0.7
+  uncertainty_threshold: 0.15
+  mc_dropout_passes: 5     # 20 → 5
+  dbscan_eps_km: 15.0
+  dbscan_min_samples: 3
+  exclusion_radius_km: 25.0
+
+paths:
+  raw_dir: data/raw
+  processed_dir: data/processed
+  splits_dir: data/processed/splits
+  metadata_dir: data/metadata
+  checkpoints_dir: outputs/checkpoints
+  results_dir: outputs/results
+  figures_dir: outputs/figures
+  maps_dir: outputs/maps
