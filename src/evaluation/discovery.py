@@ -49,17 +49,28 @@ def _build_full_z_lookup(model, loader, device, fused_dim, n_total):
 def mc_dropout_inference(model: torch.nn.Module, loader, device: str,
                          n_passes: int = 20,
                          neighbor_indices: np.ndarray | None = None,
-                         z_lookup: torch.Tensor | None = None):
+                         z_lookup: torch.Tensor | None = None,
+                         seed: int = 42):
     """Return mean and std of sigmoid(logits) across `n_passes` forward passes
     with dropout enabled. When ``neighbor_indices`` and ``z_lookup`` are
     supplied, spatial smoothing is applied at inference using the precomputed
-    deterministic z_lookup (the cheap stale-smoothing trick used in
-    continental-scale inference)."""
+    deterministic z_lookup.
+
+    A per-pass torch RNG state is set from ``seed`` so the entire MC-Dropout
+    sweep is bit-reproducible — successive runs produce identical mean and std
+    arrays, which in turn produces identical discovery clusters and SHA-256
+    pre-registration manifests.
+    """
     for m in model.modules():
         if isinstance(m, torch.nn.modules.dropout._DropoutNd):
             m.train()
     all_runs = []
-    for _ in range(n_passes):
+    for pass_idx in range(n_passes):
+        # Pin the RNG state for this pass so dropout masks are reproducible
+        torch.manual_seed(seed + pass_idx)
+        if torch.cuda.is_available():
+            torch.cuda.manual_seed_all(seed + pass_idx)
+        np.random.seed(seed + pass_idx)
         scores = []
         for batch in loader:
             cell_ids = batch["cell_id"]
@@ -149,6 +160,10 @@ def main():
     parser.add_argument("--min_samples", type=int, default=None)
     parser.add_argument("--retrain", action="store_true",
                         help="Re-train on full labeled data even if checkpoint exists")
+    parser.add_argument("--checkpoint", default=None,
+                        help="Path to a trained checkpoint. If omitted, uses "
+                             "outputs/checkpoints/discovery_full.pt (training "
+                             "it from scratch if missing).")
     args = parser.parse_args()
 
     cfg = load_config(args.config)
@@ -171,12 +186,20 @@ def main():
     train_idx = np.setdiff1d(train_idx, val_idx)
 
     # ---- Train (or load) ----
-    ckpt_path = ROOT / cfg["paths"]["checkpoints_dir"] / "discovery_full.pt"
-    if args.retrain or not ckpt_path.exists():
-        print("Training discovery model on full labeled data ...")
-        r, ckpt_path = train_one_split(cfg, train_idx, val_idx, seed=42,
-                                       device=device, log_prefix="discovery_full_")
-    ck = torch.load(ckpt_path, map_location=device)
+    if args.checkpoint:
+        ckpt_path = Path(args.checkpoint)
+        if not ckpt_path.is_absolute():
+            ckpt_path = ROOT / ckpt_path
+        if not ckpt_path.exists():
+            raise FileNotFoundError(f"--checkpoint {ckpt_path} not found")
+    else:
+        ckpt_path = ROOT / cfg["paths"]["checkpoints_dir"] / "discovery_full.pt"
+        if args.retrain or not ckpt_path.exists():
+            print("Training discovery model on full labeled data ...")
+            r, ckpt_path = train_one_split(cfg, train_idx, val_idx, seed=42,
+                                           device=device, log_prefix="discovery_full_")
+    print(f"Using checkpoint: {ckpt_path}")
+    ck = torch.load(ckpt_path, map_location=device, weights_only=False)
     model = GeoProspectNet(cfg).to(device)
     model.load_state_dict(ck["state_dict"])
     model.eval()
