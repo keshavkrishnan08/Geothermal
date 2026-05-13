@@ -1,0 +1,4 @@
+modality_kept,auroc,auprc,f1,best_epoch,checkpoint,wallclock_min
+geophysics,1.0,1.0,0.995,20,/Users/keshavkrishnan/Geothermal2/outputs/checkpoints/single_geophysics_seed42_best.pt,11.18979083299637
+geochemistry,1.0,1.0,0.9898477157360407,0,/Users/keshavkrishnan/Geothermal2/outputs/checkpoints/single_geochemistry_seed42_best.pt,0.5321390151977539
+geology,0.998311985873219,0.9915017591280516,0.9593908629441623,38,/Users/keshavkrishnan/Geothermal2/outputs/checkpoints/single_geology_seed42_best.pt,2.0985546827316286

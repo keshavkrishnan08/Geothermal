@@ -1,0 +1,20 @@
+{
+  "checkpoint": "/Users/keshavkrishnan/Geothermal2/outputs/checkpoints/cpu_max_east_seed42.pt",
+  "base_checkpoint": "/Users/keshavkrishnan/Geothermal2/outputs/checkpoints/random_cpu_max_seed42.pt",
+  "epochs": 12,
+  "lr_scale": 0.2,
+  "n_eastern_pos": 25,
+  "n_eastern_neg": 800,
+  "mc_passes": 8,
+  "prob_threshold": 0.6,
+  "unc_threshold": 0.2,
+  "dbscan_eps_km": 15.0,
+  "dbscan_min_samples": 3,
+  "n_discoveries": 61,
+  "n_grid_cells": 535068,
+  "frac_above_threshold": 0.013205798141544626,
+  "median_score": 0.08041432499885559,
+  "sum_P50_MWe": 0.010864547561178094,
+  "sum_P10_MWe": 0.0,
+  "sha256": "f38295bb9f9bc2a75f95cd26be5b42176995aad6a34ad350a993908ea8afff9c"
+}
