@@ -1,5 +1,5 @@
 # GeoProspectNet default configuration
-# Pre-tuned for the 4-modality western-US setup (Section 2.13 of CLAUDE.md)
+# Pre-tuned for the 4-modality western-US setup (the methods section of the manuscript)
 
 study_region:
   lat_min: 31.0

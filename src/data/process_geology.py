@@ -1,6 +1,6 @@
 """Compute the 11-dim geological structure feature vector per grid cell.
 
-Features (Section 1.5.5 of CLAUDE.md):
+Features (DATA.md (geology section)):
     0  fault_density_25km            sum of fault length (km) within 25 km
     1  nearest_fault_distance_km
     2  max_slip_rate_25km            (mm/yr)

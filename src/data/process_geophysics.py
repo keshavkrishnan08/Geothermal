@@ -1,6 +1,6 @@
 """Build the 6-channel geophysical stack and per-cell 32x32 patches.
 
-Channels (Section 1.2.6 of CLAUDE.md):
+Channels (DATA.md (geophysics section)):
     0 Bouguer gravity            (USGS GeoTIFF)
     1 Isostatic residual gravity (USGS GeoTIFF)
     2 Magnetic anomaly           (USGS / NOAA GeoTIFF)

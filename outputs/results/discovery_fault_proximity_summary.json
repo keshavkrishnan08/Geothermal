@@ -1,0 +1,17 @@
+{
+  "n_discoveries": 33,
+  "n_background_cells": 1000,
+  "n_qfaults_used": 109658,
+  "median_dist_disc_km": 3.4971487565138446,
+  "median_dist_bg_km": 44.33331590047298,
+  "mannwhitney_U": 3681.0,
+  "mannwhitney_p_alt_less": 1.4613548610196187e-14,
+  "within_5_km_disc": 60.60606060606061,
+  "within_5_km_bg": 10.4,
+  "within_10_km_disc": 81.81818181818183,
+  "within_10_km_bg": 20.1,
+  "within_25_km_disc": 96.96969696969697,
+  "within_25_km_bg": 37.6,
+  "within_50_km_disc": 100.0,
+  "within_50_km_bg": 53.2
+}

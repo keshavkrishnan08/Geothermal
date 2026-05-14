@@ -1,0 +1,11 @@
+{
+  "n_discoveries": 61,
+  "total_area_km2": 110640.0,
+  "T_min_2km": 53.9172108968099,
+  "T_max_2km": 92.19746271769206,
+  "sum_P_th_MWth_2km": 484168.36319590575,
+  "sum_P_th_MWth_2km_50pct_RF": 242084.18159795288,
+  "sum_P_th_MWth_2km_20pct_RF": 96833.67263918114,
+  "sum_MWe_estimate_4km_drilling": 38500.89635482759,
+  "n_4km_above_130C": 0
+}

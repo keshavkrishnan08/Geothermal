@@ -1,6 +1,6 @@
 """Build the 9-dim geochemistry feature vector per grid cell.
 
-Features (Section 1.3.4 of CLAUDE.md):
+Features (DATA.md (geochemistry section)):
     0 n_springs                       count of thermal springs within 50 km
     1 max_spring_temperature_C       (NOAA)
     2 mean_chalcedony_T_C            silica geothermometer

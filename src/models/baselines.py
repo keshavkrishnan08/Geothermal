@@ -1,6 +1,6 @@
 """All seven baseline models (B1..B7) plus a flat-feature builder.
 
-Flat features per cell (Section 3 of CLAUDE.md):
+Flat features per cell (the methods section of the manuscript):
     geophysics  30  = per-channel [mean, std, min, max, median] over 32x32
     geochemistry 9  = raw 9-d vector
     thermal      7  = [mean, std, min, max, median, p90, p10] over 64x64

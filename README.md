@@ -1,17 +1,18 @@
 # GeoProspectNet
 
-**Continental-scale geothermal discovery via multi-modal contrastive deep learning across the western United States.**
+**Multi-modal contrastive deep learning for continental-scale geothermal target discovery.**
 
-This repository accompanies the manuscript *"Continental-scale geothermal discovery via multi-modal contrastive deep learning identifies 4.3 GW of hidden hydrothermal resource in the western United States."*
+This repository accompanies the manuscript *"Multi-modal contrastive deep learning discovers 33 hidden geothermal targets totalling 6.6 GW in the western United States"* (submitted to *Geothermics*).
 
 ## Headline numbers
 
-- **235 470 cells** scored at 4 km resolution across the western US
-- **1 370 known positives** from the USGS Williams 2008 inventory
-- **22 post-2008 blind-test sites** — 100 % land in the top 10 % of the continental grid (mean 96ᵗʰ percentile), including all three Zanskar Big Blind permits
-- **33 consensus discoveries** robust to seed and model variant
-- **6 607 MWe** cumulative recoverable resource (Monte Carlo P50; range 2.5 – 17.1 GW at P10–P90), **1.74× current US installed geothermal capacity**
-- Tree-based ML baselines achieve 1.00 AUROC on the test split but **0 %** capture on the temporal hold-out — illustrating why temporal validation is essential
+- **235,470 cells** scored at 4 km resolution across the western US
+- **1,370 known positives** from the USGS Williams 2008 inventory
+- **22 post-2008 blind-test sites**: 100% land in the top 10% of the continental grid (mean 95.7th percentile), including Zanskar's recently announced Big Blind system in Nevada
+- **33 consensus discoveries** robust to seed and model variant, pre-registered via SHA-256-hashed manifest
+- **6,607 MWe** cumulative P50 recoverable capacity (Williams 2008 Monte Carlo; P10 4,597 MWe, P90 14,032 MWe)
+- Eastern direct-use extension: **14.7 to 36.7 GWth** across 25 thermal-spring loci in 13 states
+- Tree-based baselines achieve 1.00 AUROC on the in-distribution test split but **0%** capture on the temporal hold-out, illustrating why temporal validation is essential
 
 ## Quick reproduce
 
@@ -94,15 +95,15 @@ See `DATA.md` for source, version, retrieval date, and licence for every dataset
 ```
 @article{krishnan2026geoprospectnet,
   author  = {Krishnan, Keshav},
-  title   = {Continental-scale geothermal discovery via multi-modal contrastive deep learning identifies 4.3 GW of hidden hydrothermal resource in the western United States},
+  title   = {Multi-modal contrastive deep learning discovers 33 hidden geothermal targets totalling 6.6 GW in the western United States},
   year    = {2026},
-  journal = {<submitted>},
+  journal = {Geothermics (under review)},
 }
 ```
 
 ## Licence
 
-Code released under MIT. Data are under their original licences — see `DATA.md`.
+Code released under MIT. Data are under their original licences; see `DATA.md`.
 
 ## Contact
 

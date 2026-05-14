@@ -1,7 +1,7 @@
 """Download all public datasets used by GeoProspectNet.
 
-All datasets are free and public. URLs and fallbacks come from CLAUDE.md Section 1.
-The script is resumable — files that already exist are skipped.
+All datasets are free and public. URLs and fallbacks are documented in DATA.md.
+The script is resumable; files that already exist are skipped.
 """
 from __future__ import annotations
 
@@ -80,7 +80,7 @@ Place the resulting files at the indicated paths under data/raw/.
    - Or use the Python `elevation` package directly.
 
 8. Landsat thermal anomaly (OPTIONAL — modality can be skipped)
-   - Run the GEE script in CLAUDE.md Section 1.4.1
+   - Run the GEE script documented in DATA.md (Landsat section)
    - Expected: data/raw/satellite/thermal_anomaly.tif
 
 Any missing file is handled gracefully at processing time: the affected modality
